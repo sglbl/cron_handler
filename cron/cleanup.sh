@@ -1,8 +1,5 @@
 #!/bin/bash
-echo "$(date) - Running cleanup" >> /app/cron/cleanup.log
-echo "Current directory: $(pwd)" >> /app/cron/cleanup.log
-echo "List of files before cleanup:" >> /app/cron/cleanup.log
-ls -l /app/data >> /app/cron/cleanup.log
+echo "$(date) - Running cron job (for ex. cleanup etc.)" >> /var/log/cron_logs.log
 
 # Define the directory to clean
 DIRECTORY=/app/data
@@ -11,4 +8,4 @@ DIRECTORY=/app/data
 find "$DIRECTORY" -type f -mmin +0.1 -exec rm -f {} \;
 
 # Log the exit code
-echo "Exit code: $?" >> /var/log/cron.log
+echo "Return code: $?" >> /var/log/cron_logs.log

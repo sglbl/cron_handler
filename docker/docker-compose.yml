@@ -1,5 +1,5 @@
 services:
-  app:
+  sgapp:
     image: cronhandlerimage:latest
     build: 
       context: ..
@@ -12,3 +12,12 @@ services:
     ports:
       - "8000:8000"
 
+  cron:
+    image: cronhandlerimage:latest  # Use the same image as the app
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile  # Path to Dockerfile inside docker/ folder
+    volumes:
+      - ../cron:/app/cron   # Mount cron directory
+      - ../data:/app/data    # Mount data directory
+    command: ["/bin/bash", "-c", "cron -f"]  # Override the default command to run cron in the foreground
