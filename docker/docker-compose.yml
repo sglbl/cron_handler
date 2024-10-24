@@ -1,6 +1,6 @@
 services:
   sgapp:
-    image: cronhandlerimage:latest
+    image: cronhandler:latest
     build: 
       context: ..
       dockerfile: docker/Dockerfile  # Path to Dockerfile inside docker/ folder
@@ -13,7 +13,7 @@ services:
       - "8000:8000"
 
   cron:
-    image: cronhandlerimage:latest  # Use the same image as the app
+    image: cronhandler:latest  # Use the same image as the app
     build:
       context: ..
       dockerfile: docker/Dockerfile  # Path to Dockerfile inside docker/ folder
