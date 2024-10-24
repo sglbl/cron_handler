@@ -1,0 +1,14 @@
+services:
+  app:
+    image: cronhandlerimage:latest
+    build: 
+      context: ..
+      dockerfile: docker/Dockerfile  # Path to Dockerfile inside docker/ folder
+    environment:
+      PYTHONUNBUFFERED: 1
+    volumes:
+      - ../cron:/app/cron   # Mount cron directory if you have more scripts
+      - ../data:/app/data    # Mount data directory for testing
+    ports:
+      - "8000:8000"
+
